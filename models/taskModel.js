@@ -5,9 +5,10 @@ const taskModel = mongoose.model('Task',{
         type:String,
         required:true
     },
-    status:{
-        type:String,
-        required:true
+    status: {
+        type: String,
+        required: true,
+        enum: ['Em andamento', 'Finalizado']
     },
     priority:{
         type:Number,
@@ -22,7 +23,8 @@ const taskModel = mongoose.model('Task',{
     tag:[{
         type:mongoose.Schema.ObjectId,
         ref:'Tag',
-        required:true
+        required:true,
+        default:[]
     }]
 
 });
