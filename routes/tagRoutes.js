@@ -5,7 +5,7 @@ const Router = express.Router();
 
 //Create Tag
 Router.post('/insert',async (req,res)=>{
-    const post__data = req.body
+    const post__data = req.body;
     const {name,color} = post__data;
 
     //Check if the data is complete.
@@ -24,7 +24,7 @@ Router.post('/insert',async (req,res)=>{
 })
 
 //Read all Tags
-Router.get('/search',async (req,res)=>{
+Router.get('/list',async (req,res)=>{
     try{
         const tagList = await tagModel.find()
         res.send(tagList);
@@ -34,7 +34,7 @@ Router.get('/search',async (req,res)=>{
 })
 
 //Read a Tag
-Router.get('/search/:id',async (req,res)=>{
+Router.get('/list/:id',async (req,res)=>{
     const id = req.params.id;
    try{
        const listById = await tagModel.findById(id)
@@ -51,23 +51,19 @@ Router.get('/search/:id',async (req,res)=>{
 
 
 
-
 //Update a Tag
 Router.put('/update/:id',async (req,res)=>{
     const id = req.params.id;
     const update__data = req.body;
     const {name,color} = update__data;
 
-    //Check if the data is complete.
-    if(!name || !color){
-        res.status(422).send('Error : incompleted data!');
-        return;
-    }
     try{
         const updateTag = await tagModel.findByIdAndUpdate(id,{
             name:name,
             color:color
-        });
+
+        },{new:true});
+
         if(!updateTag){
             res.status(404).send(`Error : Invalid Tag id!`);
             return;
