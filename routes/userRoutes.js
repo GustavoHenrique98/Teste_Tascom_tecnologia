@@ -24,6 +24,30 @@ Router.post('/insert' , async(req,res)=>{
     }
 });
 
+// Route to authenticate user.
+Router.post('/auth-user', async(req,res)=>{
+    const post__data =  req.body;
+    const {username , password} = post__data;
+
+    try{
+        const users = await userModel.find();
+        let userFound = false;
+        for (let i = 0 ; i<users.length; i++) {
+            if (users[i].username === username && users[i].password === password) {
+                userFound = true;
+                res.send(`Welcome ${users[i].username} !`);
+                break;
+            }
+        }
+
+        if (userFound === false) {
+            res.status(404).send('Username or password is incorrect!!');
+        }
+    }catch(error){
+        res.status(500).send(`Error: ${error.message}`);
+    }
+});
+
 
 //List all users.
 Router.get('/list',async(req,res)=>{
