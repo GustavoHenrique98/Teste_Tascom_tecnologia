@@ -124,7 +124,10 @@ Router.put('/associate/:id',async(req,res)=>{
         const userTaskUpdate = await userModel.findByIdAndUpdate(userId, 
             { $addToSet: { task: taskIds } },
             { new: true }
-        ).populate('task');
+        ).populate({
+            path: 'task',
+            populate: { path: 'tag' }
+        });
 
         if (!userTaskUpdate) {
              res.status(404).send('Error: user not found!');
