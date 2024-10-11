@@ -87,7 +87,11 @@ http://localhost:3000/api/users/list
 2- Listar um usuário específico (retorna as tarefas e as tags também por conta do populate) : http://localhost:3000/api/users/list/:userId
 
 ### Post
-1- Cadastrar um novo usuario :
+1- Autenticação de usuário : 
+http://localhost:3000/api/users/auth-user/
+
+
+2- Cadastrar um novo usuario :
 http://localhost:3000/api/users/insert
 Ex:
 {
