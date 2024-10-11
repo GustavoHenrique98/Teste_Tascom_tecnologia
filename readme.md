@@ -90,6 +90,11 @@ http://localhost:3000/api/users/list
 1- Autenticação de usuário : 
 http://localhost:3000/api/users/auth-user/
 
+Ex:
+{
+    "username":"  ",
+    "password":"  "
+}
 
 2- Cadastrar um novo usuario :
 http://localhost:3000/api/users/insert
