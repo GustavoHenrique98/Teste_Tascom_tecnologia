@@ -19,14 +19,18 @@ Router.post('/insert',async (req,res)=>{
         color:color
     });
 
-    await createTag.save();
-    res.send(createTag);
-})
+    try {
+        await createTag.save();
+        res.send(createTag);
+    } catch (error) {
+        res.status(500).send(`Error: ${error.message}`);
+    }
+});
 
 //Read all Tags
 Router.get('/list',async (req,res)=>{
     try{
-        const tagList = await tagModel.find()
+        const tagList = await tagModel.find();
         res.send(tagList);
     }catch(error){
         res.status(500).send(`Error : ${error.message}`);
@@ -35,9 +39,9 @@ Router.get('/list',async (req,res)=>{
 
 //Read a Tag
 Router.get('/list/:id',async (req,res)=>{
-    const id = req.params.id;
+    const tagId = req.params.id;
    try{
-       const listById = await tagModel.findById(id)
+       const listById = await tagModel.findById(tagId);
         
        if(!listById){
             res.status(404).send(`Error : Invalid Tag id!`);
@@ -53,12 +57,12 @@ Router.get('/list/:id',async (req,res)=>{
 
 //Update a Tag
 Router.put('/update/:id',async (req,res)=>{
-    const id = req.params.id;
+    const tagId = req.params.id;
     const update__data = req.body;
     const {name,color} = update__data;
 
     try{
-        const updateTag = await tagModel.findByIdAndUpdate(id,{
+        const updateTag = await tagModel.findByIdAndUpdate(tagId,{
             name:name,
             color:color
 
@@ -78,9 +82,9 @@ Router.put('/update/:id',async (req,res)=>{
 
 //Delete a Tag
 Router.delete('/delete/:id', async (req,res)=>{
-    const id = req.params.id;
+    const tagId = req.params.id;
     try{
-        const tagDelete = await tagModel.findByIdAndDelete(id)
+        const tagDelete = await tagModel.findByIdAndDelete(tagId);
         if(!tagDelete){
             res.status(404).send('ERROR! Invalid Tag Id !');
             return;
