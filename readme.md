@@ -1,6 +1,13 @@
 # Teste técnico - Tascom 📜
 Seja bem vindo ao meu exercício, abaixo está a lista de urls para você testar as requisições.
 
+OBS1: Cheque sua conexão com o banco de dados MongoDB antes de iniciar este projeto.
+
+OBS2: Instale todas as dependencias da node modules com npm update.
+
+OBS3:Status apenas "Em andamento" ou "Finalizado" (ENUM)
+
+
 # Requisições para Task
 ### Get
 1- Listar todas as tasks :
@@ -12,17 +19,20 @@ http://localhost:3000/api/tasks/list
 1- Cadastrar uma nova task :
 http://localhost:3000/api/tasks/insert
 
+
 {
-  "title":" " ,
-  "status":" " ,
+  "title":"titulo da task" ,
+  "status":"Em andamento" ,
   "priority":1 ,
-  "description":" "
+  "description":"..."
 }
 
-2- Filtra todas as tarefas associadas a um ou mais IDs de tags passados no corpo da requisição. : http://localhost:3000/api/tasks/filter
+2- Filtra todas as tarefas associadas a um ou mais IDs de tags passados no corpo da requisição. : 
+
+http://localhost:3000/api/tasks/filter
 
 {
-  "tagIds":[" "]
+  "tagIds":["tagid1", "tagid2"]
 }
 
 ## Put
@@ -36,17 +46,18 @@ Ex:
   "description":" "
 }
 
-2- Associar uma task a uma tag : http://localhost:3000/api/tasks/associate/:idtask
+2- Associar uma ou mais tags a uma task : http://localhost:3000/api/tasks/associate/:idtask
 
 Ex: {
-  "tagIds":[" "]
+  "tagIds":["tagid1", "tagid2"]
 }
 
-3- Remover uma tag de uma task :  http://localhost:3000/api/tasks/remove-tags/:idtask
+3- Remover uma ou mais tags de uma task :  http://localhost:3000/api/tasks/remove-tags/:idtask
 
 Ex: {
-  "tagIds":[" "]
+  "tagIds":["tagid1", "tagid2"]
 }
+
 ## Delete
 1- Deletar uma task : http://localhost:3000/api/tasks/delete/:idtask
 
@@ -92,16 +103,16 @@ http://localhost:3000/api/users/auth-user/
 
 Ex:
 {
-    "username":"  ",
-    "password":"  "
+    "username":"...",
+    "password":"..."
 }
 
 2- Cadastrar um novo usuario :
 http://localhost:3000/api/users/insert
 Ex:
 {
-    "username":"  ",
-    "password":"  "
+    "username":"...",
+    "password":"..."
 }
 
 
@@ -110,20 +121,20 @@ Ex:
 
 Ex:
 {
-    "username":"  ",
-    "password":"  "
+    "username":"...",
+    "password":"..."
 }
 
 2- Vincular um usuário a uma task : http://localhost:3000/api/users/associate/:userId
 
 { 
- "taskIds":["..." , "..." ]
+ "taskIds":["taskId1" , "taskId2" ]
 }
 
 2- Desvincular um usuario a uma ou mais tasks : http://localhost:3000/api/users/remove-user-task/:userId
 
 { 
- "taskIds":["..." , "..." ]
+ "taskIds":["taskId1" , "taskId2" ]
 }
 
 ## Delete
