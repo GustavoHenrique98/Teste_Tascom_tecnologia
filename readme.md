@@ -1,11 +1,14 @@
 # Teste técnico - Tascom 📜
 Seja bem vindo ao meu exercício, abaixo está a lista de urls para você testar as requisições.
 
-OBS1: Cheque sua conexão com o banco de dados MongoDB antes de iniciar este projeto.
+OBS1: Verifique sua conexão com o banco de dados MongoDB antes de iniciar este projeto.
 
-OBS2: Instale todas as dependencias da node modules com npm update.
+OBS2: Instale todas as dependencias do projeto com npm update na raiz do diretório.
 
-OBS3:Status apenas "Em andamento" ou "Finalizado" (ENUM)
+OBS4: Inicie o server.js da raiz do diretório, as outras pastas (MySql, PostgreSql , Front-end)
+são conteúdos adicionais(Não solicitados!) que fiz pra me desafiar e TENTAR entregar 3 cruds se der tempo.
+
+OBS3:Status apenas "Em andamento" ou "Finalizado" (ENUM).
 
 
 # Requisições para Task
