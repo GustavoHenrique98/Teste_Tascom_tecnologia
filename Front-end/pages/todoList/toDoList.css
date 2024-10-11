@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body,html{
+    height: 100%;
+    font-family: "Roboto",sans-serif;
+    background-color: rgb(245, 241, 241);
+}
+
+#header_top_todoList{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0rem;
+    background-color: rgb(218, 211, 211);
+}
+#header_top_todoList h1{
+    padding-left: 1rem;
+} 
+#header_top_todoList nav{
+    margin-right: 1rem;
+}
+
+#header_top_todoList nav ul{
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+}
+#header_top_todoList nav ul li a{
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: black;
+    outline: 2px solid black;
+    border-radius: 7px;
+    padding:10px;
+    transition: 0.8s;
+}
+#header_top_todoList nav ul li a:hover{
+    background-color: black;
+    color: white;
+}
+
+/*form*/
+main{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#container_form_todolist{
+    width:80%;
+    height:80%;
+    border: 1px solid rgb(182, 178, 178);
+    border-radius: 7px;
+}
+
+#header_todolist{
+    padding:1.7rem;
+    background: gray;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+#container_btn_actions{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+}
+
+#inputSearch_tasks,#btn_search , #select_search{
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition:0.8s;
+}
+#select_search:hover , #btn_search:hover , #btn_createTask:hover , #btn_createTag:hover{
+    color: white;
+    background-color: black;
+
+}
+#btn_createTask , #btn_createTag{
+    padding:0.5rem;
+    border-radius: 7px;
+    cursor: pointer;
+    transition:0.8s;
+    font-size: 1.3rem;
+
+}
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Gustavo Henrique Pereira Silva">
+    <meta name="description" content="crud de uma to-do list utilizando banco de dados relacional e não relacional">
+    <meta name="keywords" content="MySql , PostGreeSql , MongoDB">
+    <!-- Style responsivo -->
+    <link rel="stylesheet" href="./toDoList.css">
+    <!-- style login -->
+    <link rel="stylesheet" href="./toDoListResponsivo.css">
+    <!-- FontsAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <!-- AXIOS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+    <title>Tascom Tecnologia - Teste técnico</title>
+</head>
+<body>
+    <header id="header_top_todoList">
+        <h1>To-do-List</h1>
+        <nav>
+            <ul>
+                <li><a href="#" id="btn_edit_user">My Profile</a></li>
+                <li><a href="#" id="btn_logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="container_form_todolist">
+           <header id="header_todolist">
+                <form action="#" method="#" id="searchForm">
+                    <label for="inputSearch_tasks">Search:</label>
+                    <input type="search" name="inputSearch_tasks" id="inputSearch_tasks" placeholder="search a task">
+                    <select id="select_search">
+                        <option value="tasks">tasks</option>
+                        <option value="tasks">tags</option>
+                        <option value="tasks">ta</option>
+                    </select>
+                    <button type="submit" id="btn_search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+
+                <div id="container_btn_actions">
+                    <button id="btn_createTask">Create Task</button>
+                    <button id="btn_createTag">Create Tag</button>
+                </div>
+
+           </header>
+
+           <section id="tasks_section">
+            <table style="border:1px solid black; width: 100%;">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Status</th>
+                        <th>Prioridade</th>
+                        <th>Descrição</th>
+                        <th>Tags</th>
+                    </tr>
+                </thead>
+                
+            </table>
+           </section>
+
+        </section>
+    </main>
+    
+
+
+    <script type="module" src="../../js/03-toDoList.js"></script>
+</body>
+</html>
