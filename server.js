@@ -7,9 +7,9 @@ import morgan from 'morgan';
 import connectToDatabase from './database/database.js';
 
 //Routes imports
-import taskRoutes from './routes/taskRoutes.js'
-import tagRoutes from './routes/tagRoutes.js'
-
+import taskRoutes from './routes/taskRoutes.js';
+import tagRoutes from './routes/tagRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 const app = express();
 
 //Middlewares
@@ -36,10 +36,12 @@ connectToDatabase();
 //Routes
 app.use('/api/tasks', taskRoutes);
 app.use('/api/tags', tagRoutes);
+app.use('/api/users' ,userRoutes);
 
 app.use((req,res)=>{
     res.status(404).send('<h1> 404 not found </h1>');
-})
+});
+
 app.listen(3000,()=>{
     console.log(`Server is running in http://localhost:3000`);
 });
