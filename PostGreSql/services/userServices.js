@@ -30,21 +30,24 @@ class UserService{
     }
 
     async readUser(userID) {
-        try {
-            const user = await this.UserRepository.read(userID);
-            if(user === null){
-                return "Invalid user ID!"
-                
+        if(!userID){
+            console.log('User ID is required to use this function!');    
+        }else{
+            try {
+                const user = await this.UserRepository.read(userID);                
+                if(user === null){
+                    return "Invalid user ID!";
+                }
+                return user;     
+            } catch (error) {
+                console.log(`ERROR : ${error}`);
             }
-            return user;     
-        } catch (error) {
-            console.log(`ERROR : ${error}`);
         }
     }
 
     async updateUser(userID,user){
         if(!userID || !user){
-            console.log("Arguments userID and user are required to use this function!");
+            console.log("The user ID and user arguments are required to use this function!!");
         }else{
             try{
                 const userUpdated = await this.UserRepository.update(userID,user);
@@ -62,7 +65,7 @@ class UserService{
 
     async deleteUser(userID){
         if(!userID){
-            console.log("Argument userID are required to use this function!");
+            console.log("User ID is required to use this function!");
         }else{
             try{
                 const userDeleted = await this.UserRepository.delete(userID);

@@ -34,7 +34,7 @@ class TaskServices{
 
     async readTask(TaskID){
         if(!TaskID){
-            console.log("Argument TaskId are required to use this function!");
+            console.log("Task ID is required to use this function!");
         }else{
             try{
                 const task = await this.TaskRepository.read(TaskID);
@@ -71,7 +71,7 @@ class TaskServices{
 
     async deleteTask(TaskId){
         if(!TaskId){
-            console.log("Argument TaskID are required to use this function!");
+            console.log("Task ID is required to use this function!");
         }else{
             try{
                 const taskDeleted = await this.TaskRepository.delete(TaskId);

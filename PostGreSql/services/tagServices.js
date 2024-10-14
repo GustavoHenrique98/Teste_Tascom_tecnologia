@@ -9,7 +9,7 @@ class TagService{
 
     async createTag(name,color){
         if(!name || !color){
-            console.log('Error: The name and color parameters are required to use this function!');
+            console.log('Error: The name and color arguments are required to use this function!');
             return;
         }else{
             try{
@@ -33,7 +33,7 @@ class TagService{
 
     async readTag(TagId){
         if(!TagId){
-            console.log('The TagId parameter are required to use this function!');            
+            console.log('Tag ID is required to use this function!');            
         }else{
             try{
                 const readTag = await this.TagRepository.read(TagId);
@@ -67,7 +67,7 @@ class TagService{
 
     async deleteTag(TagId){
         if(!TagId){
-            console.log('The TagId parameter are required to use this function!');            
+            console.log('Tag ID is required to use this function!');            
         }else{
             try{
                 const deletedTag = await this.TagRepository.delete(TagId);
