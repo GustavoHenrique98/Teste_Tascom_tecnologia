@@ -4,7 +4,6 @@ import cors from 'cors';
 import morgan from 'morgan';
 import { checkConnection } from './database/database.js';
 
-
 const app = express();
 
 //Middlewares
@@ -23,14 +22,14 @@ app.use((req,res,next)=>{
         res.status(500).send('<h1> Sorry API in maintenance! </h1>');
     }
 });
-checkConnection()
 
+await checkConnection();
 
-
+import userRoutes from './routes/userRoutes.js'
 // //Routes
 // app.use('/api/tasks', taskRoutes);
 // app.use('/api/tags', tagRoutes);
-// app.use('/api/users' ,userRoutes);
+app.use('/api/users' ,userRoutes);
 
 app.use((req,res)=>{
     res.status(404).send('<h1> 404 not found </h1>');

@@ -31,6 +31,7 @@ Router.post('/auth-user', async(req,res)=>{
 
     try{
         const users = await userModel.find();
+        console.log(users)
         let userFound = false;
         for (let i = 0 ; i<users.length; i++) {
             if (users[i].username === username && users[i].password === password) {

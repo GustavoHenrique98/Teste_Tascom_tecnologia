@@ -2,12 +2,10 @@ class Users{
     ID;
     username;
     password;
-    id_task;
-    constructor(username,password,id_task, ID = null){
-        this.ID = null;
+    constructor(username,password,ID = null){
         this.username = username;
         this.password = password;
-        this.id_task = id_task;
+        this.ID = ID;
     }
 }
 
