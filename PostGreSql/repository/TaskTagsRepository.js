@@ -8,36 +8,24 @@ class TaskTagsRepository{
             const createTaskTag = await conection.query('INSER INTO Task_Tags (task_id,tag_id) VALUES($1 , $2)',
             [TaskTags.task_id , TaskTags.tag_id]);
         }catch(error){
-            console.log(`ERROR : ${error}`);
+            console.log(`Error : ${error}`);
         }
     }
 
-    async readAllFromUser(userID){
+
+    async read(taskID,tagID){
         try{
-            const results = await conection.query(`
-               SELECT 
-                    Users.id AS id_user, 
-                    Users.username,
-                    Tasks.title, 
-                    Tasks.status, 
-                    Tasks.priority,
-                    Tasks.description, 
-                    Tags.name AS tag_name, 
-                    Tags.color AS tag_color
-                FROM Users
-                    INNER JOIN Tasks ON Users.id = Tasks.user_id
-                    INNER JOIN Task_Tags ON Tasks.ID = Task_Tags.task_id
-                    INNER JOIN Tags ON Task_Tags.tag_id = Tags.ID; 
-                WHERE Users.ID = $1`,[userID]);
-
-                const readAllFromUser = results.rows;
-                return readAllFromUser;
+            const results = await conection.query('SELECT * FROM Tasks_Tags WHERE task_id = $1 AND tag_id = $2',[taskID,tagID]);
+            const resultsTask = results.rows[0];
+            if(resultsTask === undefined ){
+                return null;
+            }else{
+                return new TaskTags(resultsTask.task_id,resultsTask.tag_id);
+            }
         }catch(error){
-            console.log(`ERROR : ${error}`);
+            console.log(`Error : ${error}`);
         }
-    }    
-
-    
+    }   
 
 
 }

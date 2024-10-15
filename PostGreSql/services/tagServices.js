@@ -37,11 +37,7 @@ class TagService{
         }else{
             try{
                 const readTag = await this.TagRepository.read(TagId);
-                if(readTag === null){
-                    return 'Invalid Tag id!';
-                }else{
-                    return readTag;
-                }
+                return readTag;
             }catch(error){
                 console.log(`Error:${error}`);
             }
@@ -54,11 +50,7 @@ class TagService{
         }else{
             try{
                 const updatedTag = await this.TagRepository.update(TagId,tag);
-                if(updatedTag === null){
-                    return 'Invalid Tag id!';
-                }else{
-                    return updatedTag;
-                }
+                return updatedTag;
             }catch(error){
                 console.log(`Error:${error}`);
             }
@@ -71,11 +63,7 @@ class TagService{
         }else{
             try{
                 const deletedTag = await this.TagRepository.delete(TagId);
-                if(deletedTag === null){
-                    return 'Invalid Tag id!';
-                }else{
-                    return deletedTag;
-                }
+                return deletedTag;
             }catch(error){
                 console.log(`Error:${error}`);
             }

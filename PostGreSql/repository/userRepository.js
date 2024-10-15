@@ -9,12 +9,11 @@ class UserRepository{
         try{
             const results = await conection.query('INSERT INTO Users (username,password) VALUES($1 , $2)',
             [user.username ,user.password]);
-            console.log(results)
         }catch(error){
             console.log(`ERROR : ${error.message}`);
         }
     }
-
+    
     async list(){
         try{
             const results = await conection.query('SELECT * FROM Users');
@@ -38,15 +37,42 @@ class UserRepository{
             console.log('respository',error);
         }
     }
+    //List all tasks and tags associated with a user.
+    async readAllFromUser(userID){
+        try{
+            const results = await conection.query(`
+               SELECT 
+                    Users.id AS id_user, 
+                    Users.username,
+                    Tasks.title, 
+                    Tasks.status, 
+                    Tasks.priority,
+                    Tasks.description, 
+                    Tags.name AS tag_name, 
+                    Tags.color AS tag_color
+                FROM Users
+                    INNER JOIN Tasks ON Users.ID = Tasks.user_id
+                    INNER JOIN Task_Tags ON Tasks.ID = Task_Tags.task_id
+                    INNER JOIN Tags ON Task_Tags.tag_id = Tags.ID
+                WHERE Users.ID = $1`,[userID]);
+
+                const readAllFromUser = results.rows;
+                if(readAllFromUser.length ===0){
+                    return null;
+
+                }
+        }catch(error){
+            console.log(`ERROR : ${error}`);
+        }
+    } 
 
     async update(userID,user){
         try{
             const results = await conection.query('UPDATE Users SET username = $1 , password = $2 WHERE ID = $3',
             [user.username , user.password , userID]);
-            if(results.rowCount ===0 ){
+            
+            if(results.rowCount === 0 ){
                 return null;
-            }else{
-                console.log(`Usuário atualizado com sucesso!`);
             }
         }catch(error){
             console.log(error);
@@ -56,10 +82,9 @@ class UserRepository{
     async delete(userID){
         try{
             const results = await conection.query('DELETE FROM Users WHERE ID = $1',[userID]);
-            if(results.rowCount ===0 ){
+           
+            if(results.rowCount === 0 ){
                 return null;
-            }else{
-                console.log("Usuário deletado com sucesso!");
             }
         }catch(error){
             console.log(error);

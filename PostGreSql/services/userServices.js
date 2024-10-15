@@ -1,6 +1,7 @@
 import Users from "../entity/users.js";
 import UserRepository from "../repository/userRepository.js";
 
+
 class UserService{
     UserRepository;
     constructor(){
@@ -29,15 +30,25 @@ class UserService{
         }
     }
 
+    async readTaskTagsFromUser(userID){
+        if(!userID){
+            console.log('User ID is required to use this function!');
+        }else{
+            try{
+                const all_infoFromUsers = await this.UserRepository.readAllFromUser(userID);
+                return all_infoFromUsers;
+            }catch(error){
+                console.log(`ERROR : ${error}`);
+            }
+        }
+    }
+
     async readUser(userID) {
         if(!userID){
             console.log('User ID is required to use this function!');    
         }else{
             try {
                 const user = await this.UserRepository.read(userID);                
-                if(user === null){
-                    return "Invalid user ID!";
-                }
                 return user;     
             } catch (error) {
                 console.log(`ERROR : ${error}`);
@@ -51,11 +62,7 @@ class UserService{
         }else{
             try{
                 const userUpdated = await this.UserRepository.update(userID,user);
-                if(userUpdated === null){
-                    return 'Invalid user ID';
-                }else{
-                    return userUpdated;
-                }
+                return userUpdated;
             }catch(error){
                 console.log(`ERROR : ${error}`);
             }
@@ -69,11 +76,7 @@ class UserService{
         }else{
             try{
                 const userDeleted = await this.UserRepository.delete(userID);
-                if(userDeleted === null){
-                    return 'Invalid user ID!';
-                }else{
-                    return userDeleted;
-                }
+                return userDeleted;
             }catch(error){
                 console.log(`ERROR : ${error}`);
             }

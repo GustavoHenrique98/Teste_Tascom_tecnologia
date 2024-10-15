@@ -45,8 +45,6 @@ class TagRepository{
             const tagUpdated = results.rowCount;
             if(tagUpdated === 0){
                 return null;
-            }else{
-                console.log('Tag updated sucessfull');
             }
         }catch(error){
             console.log(`ERROR : ${error}`);
@@ -59,8 +57,6 @@ class TagRepository{
             const deletedTag = results.rowCount;
             if(deletedTag === 0){
                 return null;
-            }else{
-                console.log('Tag deleted sucessful!!');
             }
         }catch(error){
             console.log(`ERROR : ${error}`);

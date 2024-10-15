@@ -38,11 +38,7 @@ class TaskServices{
         }else{
             try{
                 const task = await this.TaskRepository.read(TaskID);
-                if(task === null){
-                    return 'Invalid task id!';
-                }else{
-                    return task;
-                }
+                return task;
             }catch(error){
                 console.log(`Error:${error}`);
             }
@@ -75,11 +71,7 @@ class TaskServices{
         }else{
             try{
                 const taskDeleted = await this.TaskRepository.delete(TaskId);
-                if(taskDeleted === null){
-                    return 'Invalid task id';
-                }else{
-                    taskDeleted;
-                }
+                return taskDeleted;
             }catch(error){
                 console.log(`Error:${error}`);
             }
