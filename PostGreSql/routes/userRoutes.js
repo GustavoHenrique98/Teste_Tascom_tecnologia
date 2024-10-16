@@ -84,7 +84,7 @@ Router.get('/info-user/:userID',async(req,res)=>{
     try{
         const results = await userServices.readTaskTagsFromUser(userID);
         if(results === null){
-            res.status(404).send('No tasks or tags found for this user.');
+            res.status(404).send('The user does not have any tasks associated with them.');
             return;
         }
         res.send(results);
