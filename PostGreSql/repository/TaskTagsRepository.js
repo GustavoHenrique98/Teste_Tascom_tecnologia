@@ -5,7 +5,7 @@ class TaskTagsRepository{
 
     async create(TaskTags){
         try{
-            const createTaskTag = await conection.query('INSER INTO Task_Tags (task_id,tag_id) VALUES($1 , $2)',
+            const createTaskTag = await conection.query('INSERT INTO Task_Tags (task_id,tag_id) VALUES($1 , $2)',
             [TaskTags.task_id , TaskTags.tag_id]);
         }catch(error){
             console.log(`Error : ${error}`);
