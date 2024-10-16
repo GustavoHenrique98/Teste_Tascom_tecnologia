@@ -30,10 +30,12 @@ await checkConnection();
 import userRoutes from './routes/userRoutes.js';
 import taskRoutes from './routes/taskRoutes.js';
 import tagRoutes from './routes/tagRoutes.js';
+import TasksTagsRoutes from'./routes/TaskTagsRoutes.js';
 //Routes
 app.use('/api/users' ,userRoutes);
 app.use('/api/tasks', taskRoutes);
 app.use('/api/tags', tagRoutes);
+app.use('/api/taskTags', TasksTagsRoutes);
 
 app.use((req,res)=>{
     res.status(404).send('<h1> 404 not found </h1>');
