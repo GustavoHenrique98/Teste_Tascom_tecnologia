@@ -16,7 +16,7 @@ const listUser =  await userService.readUser(1);
 console.log(listUser);
 
 
-//UPDATE A TASK.
+//UPDATE A USER.
 
 // const gustavo =  new Users('Gustavo2','senhaAtualizada');
 // userService.updateUser(1,gustavo);
