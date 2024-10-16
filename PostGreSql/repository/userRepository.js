@@ -42,7 +42,7 @@ class UserRepository{
         try{
             const results = await conection.query(`
                SELECT 
-                    Users.id AS id_user, 
+                    Users.ID AS id_user, 
                     Users.username,
                     Tasks.title, 
                     Tasks.status, 
@@ -59,8 +59,9 @@ class UserRepository{
                 const readAllFromUser = results.rows;
                 if(readAllFromUser.length ===0){
                     return null;
-
                 }
+
+                return readAllFromUser;
         }catch(error){
             console.log(`ERROR : ${error}`);
         }
